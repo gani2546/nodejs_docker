@@ -1,7 +1,17 @@
-FROM node:18
+# Use Node.js based on Debian Slim as the base image
+FROM node:16-slim
+
+# Create and set the working directory inside the container
 WORKDIR /app
-COPY package*.json ./
-RUN npm install
+
+# Copy the entire codebase to the working directory
 COPY . .
+
+# Install dependencies
+RUN npm install
+
+# Expose the port your app runs on
 EXPOSE 3000
-CMD ["node", "app.js"]
+
+# Define the command to start your application
+CMD ["npm", "start"]
