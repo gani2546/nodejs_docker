@@ -1,5 +1,7 @@
 FROM node:18
-COPY . /main
 WORKDIR /main
+COPY package*.json ./main
+RUN npm install
+COPY . .
 EXPOSE 3000
-CMD [ "node","main.js" ]
+CMD ["node", "main.js"]
